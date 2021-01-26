@@ -35,12 +35,12 @@
         />
       </div>
 
-      <button @click="saveTutorial" class="btn btn-success">Submit</button>
+      <button @click="saveStudent" class="btn btn-success">Submit</button>
     </div>
 
     <div v-else>
       <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" @click="newTutorial">Add</button>
+      <button class="btn btn-success" @click="newStudent">Add</button>
     </div>
   </div>
 </template>
@@ -49,6 +49,7 @@ import studentService from "../services/studentService";
 
 export default {
   name: "add-Student",
+
   data() {
     return {
       student: {
@@ -64,12 +65,14 @@ export default {
 
   methods: {
     saveStudent() {
+    
       var data = {
         name: this.student.name,
         department: this.student.department,
         subject: this.student.subject,
       };
-
+       
+ 
       studentService
         .create(data)
         .then((response) => {
